@@ -1,3 +1,13 @@
+// NOTES:
+//
+//----------------------------------------------------------
+// Units: (following the Beer.XML standard)
+//      mass: kilograms
+//      volume: liters
+//      temperature: celsius
+//      time: minutes
+//      specific gravity: relative (eg. 1.035)
+//      pressure: kilopascals
 
 function Ingredient(name){
     this.name = name;
@@ -26,10 +36,30 @@ Grain.prototype = Object.create(Ingredient.prototype);
 Hops.prototype = Object.create(Ingredient.prototype);
 Yeast.prototype = Object.create(Ingredient.prototype);
 
-g = new Grain("Pale 2-Row (US)", 0.80, 1.8, 10);
-h = new Hops("Cascade", .068, 2, 60);
-y = new Yeast("San Diego Super Yeast", 0.795);
+grains = [
+    new Grain("Pale 2-Row (US)", 0.79, 2.0),
+    new Grain("Munich (UK)", 0.80, 9.0),
+    new Grain("Crystal 60L", 0.74, 60.0),
+    new Grain("Carared", 0.75, 20.0),
+    new Grain("Wheat Malt", 0.84, 2.0)
+];
 
-console.log(g);
-console.log(h);
-console.log(y);
+hops = [
+    new Hops("Cascade", .06),
+    new Hops("Amarillo", .095),
+    new Hops("Fuggles", .045),
+    new Hops("Hallertau", .045),
+    new Hops("Warrior", 0.155)
+];
+
+yeast = [
+    new Yeast("California Ale Yeast", .75),
+    new Yeast("English Ale Yeast", 0.66),
+    new Yeast("Kolsch", .75),
+    new Yeast("Belgian Strong Ale", .76),
+    new Yeast("San Diego Super Yeast", .80)
+];
+
+console.log(grains);
+console.log(hops);
+console.log(yeast);
