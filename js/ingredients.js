@@ -14,7 +14,7 @@ function Ingredient(name){
     this.name = name;
 }
 
-function Grain(name, yieldPer, color, amount){
+function Fermentable(name, yieldPer, color, amount){
     Ingredient.call(this, name);
     this.yieldPer = yieldPer; // fractional (eg. 0.78)
     this.color = color; // lovibond
@@ -34,16 +34,44 @@ function Yeast(name, attenuation){
     this.attenuation = attenuation;
 }
 
-Grain.prototype = Object.create(Ingredient.prototype);
+function Style(name, ogMin, ogMax, fgMin, fgMax, ibuMin, ibuMax, colorMin, colorMax){
+    Ingredient.call(this, name);
+    this.ogMin = ogMin;
+    this.ogMax = ogMax;
+    this.fgMin = fgMin;
+    this.fgMax = fgMax;
+    this.ibuMin = ibuMin;
+    this.ibuMax = ibuMax;
+    this.colorMin = colorMin;
+    this.colorMax = colorMax;
+}
+
+function Equipment(name, batchSize){
+    Ingredient.call(this, name);
+    this.batchSize = batchSize;
+    this.boilSize = batchSize + 6;
+}
+
+function Misc(name, use, type, time, amount){
+    Ingredient.call(this, name);
+    this.use = use;
+    this.type = type;
+    this.time = time;
+    this.amount = amount;
+}
+
+Fermentable.prototype = Object.create(Ingredient.prototype);
 Hops.prototype = Object.create(Ingredient.prototype);
 Yeast.prototype = Object.create(Ingredient.prototype);
+Style.prototype = Object.create(Ingredient.prototype);
+Equipment.prototype = Object.create(Ingredient.prototype);
 
 grains = [
-    new Grain("Pale 2-Row (US)", 0.79, 2.0),
-    new Grain("Munich (UK)", 0.80, 9.0),
-    new Grain("Crystal 60L", 0.74, 60.0),
-    new Grain("Carared", 0.75, 20.0),
-    new Grain("Wheat Malt", 0.84, 2.0)
+    new Fermentable("Pale 2-Row (US)", 0.79, 2.0),
+    new Fermentable("Munich (UK)", 0.80, 9.0),
+    new Fermentable("Crystal 60L", 0.74, 60.0),
+    new Fermentable("Carared", 0.75, 20.0),
+    new Fermentable("Wheat Malt", 0.84, 2.0)
 ];
 
 hops = [
@@ -61,7 +89,3 @@ yeast = [
     new Yeast("Belgian Strong Ale", .76),
     new Yeast("San Diego Super Yeast", .80)
 ];
-
-console.log(grains);
-console.log(hops);
-console.log(yeast);

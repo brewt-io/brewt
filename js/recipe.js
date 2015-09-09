@@ -1,9 +1,10 @@
-function Recipe(){
+function Recipe(equipment, style){
     this.grains = [];
     this.hops =  [];
     this.yeast = undefined;
     this.efficieny = 0.75;
-    this.volume = 18.9271; // 5 gallons
+    this.equipment = equipment;
+    this.style = style;
 }
 
 Recipe.prototype.calculateOrignalGravity = function(){
@@ -11,7 +12,7 @@ Recipe.prototype.calculateOrignalGravity = function(){
     for (var i=0; i<this.grains.length; i++){
         totalPoints += this.grains[i].amount * this.grains[i].ppg * this.efficieny;
     }
-    this.originalGravity = totalPoints/this.volume/1000 + 1;
+    this.originalGravity = totalPoints/this.equipment.boilSize/1000 + 1;
     return this.originalGravity;
 };
 
@@ -50,7 +51,7 @@ Recipe.prototype.calculateBitterness = function(){
     for (var i=0; i<this.hops.length; i++){
         var correctedGravity = 1 + (this.originalGravity-1.050)/2.0;
         var utilizationFactor = utilization(this.originalGravity, this.hops[i].time);
-        totalIBU += this.hops[i].amount*1000 * utilizationFactor * this.hops[i].alphaAcids/100 *1000/(this.volume*correctedGravity);
+        totalIBU += this.hops[i].amount*1000 * utilizationFactor * this.hops[i].alphaAcids/100 *1000/(this.equipment.boilSize*correctedGravity);
     }
     this.bitterness = totalIBU;
     return this.bitterness;
@@ -58,18 +59,20 @@ Recipe.prototype.calculateBitterness = function(){
 
 
 //r = new Recipe();
-//r.grains.push(new Grain('Pale Malt (2 Row) UK', 0.78, 2.5, 2.267960));
-//r.grains.push(new Grain('Barley, Flaked', 0.70, 1.7, 0.907184));
-//r.grains.push(new Grain('Black Barley (Stout)', 0.55, 500, 0.453592));
+//r.grains.push(new Fermentable('Pale Malt (2 Row) UK', 0.78, 2.5, 2.267960));
+//r.grains.push(new Fermentable('Barley, Flaked', 0.70, 1.7, 0.907184));
+//r.grains.push(new Fermentable('Black Barley (Stout)', 0.55, 500, 0.453592));
+e = new Equipment('Brew Pot and 5 Gal Cooler', 20);
+s = new Style('English Pale Ale', 1.043, 1.060, 1.010, 1.020, 20, 40, 6, 12);
+r = new Recipe(e, s);
 
-r = new Recipe();
-r.grains.push(new Grain('Wheat', 0.78, 2.5, 2.267960));
-r.grains.push(new Grain('Honey', 0.70, 1.7, 0.907184));
-r.grains.push(new Grain('Two-Row', 0.55, 500, 0.453592));
+r.grains.push(new Fermentable('Wheat', 0.78, 2.5, 2.267960));
+r.grains.push(new Fermentable('Honey', 0.70, 1.7, 0.907184));
+r.grains.push(new Fermentable('Two-Row', 0.55, 500, 0.453592));
 r.yeast = new Yeast("Irish Ale",.73);
 r.hops.push(new Hops('Goldings, East Kent', 5.00, 0.0637860, 60));
 
-//console.log(r);
+console.log(r);
 console.log("Original Gravity: " + r.calculateOrignalGravity().toFixed(3));
 console.log("Final Gravity:    " + r.calculateFinalGravity().toFixed(3));
 console.log("ABV:              " + r.calculateABV().toFixed(1) + "%");
