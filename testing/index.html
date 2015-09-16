@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BREWT</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript">
+    // VARIABLE
+
+var input1 = " 01";
+
+var input2 = " 02";
+
+// ADD LIST ITEM AND TEXT
+
+$(document).ready(function() {
+
+$(".add").click(function() {
+      var text = $(this).text();
+  $(".recipe").append("<li>" + text + "<td'>" + input1 + input2 + "</td>" + '<button class="remove-btn">X</button>' + "</li>");
+});
+});
+
+// REMOVE LIST ITEM
+
+$(document).ready(function() {
+
+$('.recipe').on('click', 'button', function() {
+  $(this).closest('li').remove();
+});
+});
+
+
+
+
+    </script>
+    <style media="screen">
+    @import url(http://fonts.googleapis.com/css?family=Montserrat);
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
+    body {
+      color: #47525c;
+      background-color: #f0f0f0;
+      font-family: 'Open-sans', sans-serif;
+      -webkit-user-select: none;
+    }
+
+    main {
+      margin: 5em;
+    }
+
+    .title {
+      width: 100%;
+      text-align: center;
+      outline: 0;
+    }
+
+    .title:hover {
+      color: #aaa;
+      text-decoration: underline;
+    }
+
+    h1,
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    td,
+    label,
+    li {
+      color: #aaa;
+      list-style-type: none;
+      line-height: 2em;
+      cursor: pointer;
+    }
+
+    li:hover {
+      color: #a8ca65;
+    }
+
+    li:active {
+      color: #a8ca65;
+    }
+
+    label:hover {
+      color: #a8ca65;
+    }
+
+    section {
+      margin-top: 5em;
+      float: left;
+      margin-right: 12em;
+    }
+
+    .remove-btn {
+      border-radius: 50%;
+      background-color: transparent;
+      border: none;
+      color: #aaa;
+      height: 2em;
+      width: 2em;
+      position: relative;
+      top: -.2em;
+      right: -1em;
+    }
+
+    .remove-btn:hover {
+      border-radius: 50%;
+      background-color: #f2836b;
+      color: white;
+    }
+
+    .recipe li:hover {
+      color: #f2836b;
+    }
+
+    .batman:hover {
+      color: #f2836b;
+    }
+
+    .style input[type="radio"] {
+      display: none;
+    }
+
+    .style label {
+      display: block;
+    }
+
+    .style input[type="radio"]:checked + label {
+      color: #fefefe;
+      background-color: #a8ca65;
+      margin-left: -10px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .details {
+      color: red;
+    }
+    </style>
+  </head>
+  <body>
+    <main>
+
+  <h1 class="title" contenteditable="true">New Recipe_</h1>
+
+  <section>
+
+    <div class="style">
+      <h2>STYLE</h2>
+
+      <input type="radio" id="radio1" name="radios" value="all" checked>
+      <label for="radio1">white</label>
+
+      <input type="radio" id="radio2" name="radios" value="false">
+      <label for="radio2">blonde</label>
+
+      <input type="radio" id="radio3" name="radios" value="true">
+      <label for="radio3">IPA</label>
+
+      <input type="radio" id="radio4" name="radios" value="true">
+      <label for="radio4">pilsner</label>
+
+      <input type="radio" id="radio5" name="radios" value="true">
+      <label for="radio5">amber</label>
+
+      <input type="radio" id="radio6" name="radios" value="true">
+      <label for="radio6">brown</label>
+
+      <input type="radio" id="radio7" name="radios" value="true">
+      <label for="radio7">stout</label>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <ol class="ingredients">
+      <h2>INGREDIENT LIST</h2>
+      <li class="add grain">alabaster wheat</li>
+      <li class="add grain">denali amber</li>
+      <li class="add grain">hollow barley</li>
+      </br>
+      <li class="add hop">summit hops</li>
+      <li class="add hop">victory hops</li>
+      <li class="add hop">verdigris hops</li>
+      </br>
+      <li class="add yeast">revielle yeast</li>
+      <li class="add yeast">renard lambic</li>
+      <li class="add yeast">resitute yeast</li>
+    </ol>
+
+  </section>
+
+  <section>
+
+    <ol class="recipe">
+      <h2>RECIPE</h2>
+    </ol>
+
+  </section>
+
+  <section>
+
+    <ol class="sliders">
+      <h2>SLIDERS</h2>
+    </ol>
+
+  </section>
+
+
+</main>
+
+  </body>
+</html>
