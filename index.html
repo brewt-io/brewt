@@ -1,74 +1,66 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html ng-app="brewt">
+  <head>
+    <meta charset="utf-8">
+    <title>BREWT</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/conversion.js"></script>
     <script type="text/javascript" src="js/ingredients.js"></script>
     <script type="text/javascript" src="js/recipe.js"></script>
     <script type="text/javascript" src="js/ui.js"></script>
-</head>
-<body>
-<div class="left-menu">
-    <div class="logo">
-        <div>BREWT</div>
-    </div>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/css" src="css/styles.css"></script>
+  </head>
 
-    <div class="accordion">
+  <body>
+    <script type="text/javascript" src="js/app.js"></script>
 
-        <div class="section">
-            <input type="radio" name="accordion-1" id="style-list" checked="checked" />
-            <label for="style-list"><span>STYLE</span><i class="fa fa-search"></i></label>
-            <div class="content">
-                <ul>
-                </ul>
-            </div>
+    <h1 class="title" contenteditable="true">New Recipe</h1>
+
+    <section>
+
+      <div class="style" ng-controller="StyleController as styleCtrl" title={{styleCtrl.getActiveStyle().description}}>
+        <h2>{{styleCtrl.getActiveStyle().name}}</h2>
+        <button ng-click="styleCtrl.toggleSelectActive()">Select Style</button>
+        <div ng-repeat="style in styleCtrl.styles" ng-show="styleCtrl.selectActive">
+          <button ng-click="styleCtrl.select($index)">{{style.name}}</button>
         </div>
+      </div>
 
-        <div class="section">
-            <input type="radio" name="accordion-1" id="section-2" value="toggle" />
-            <label for="section-2"> <span>EQUIPMENT</span><i class="fa fa-chevron-down"></i></label>
-            <div class="content">
-                <ul>
-                </ul>
-            </div>
-        </div>
 
-        <div class="section">
-            <input type="radio" name="accordion-1" id="fermentables-list" value="toggle" />
-            <label for="fermentables-list"> <span>FERMENTABLES</span><i class="fa fa-search"></i></label>
-            <div id="fermentables-list-content">
-                <ul>
-                </ul>
-            </div>
-        </div>
+      <h2>INGREDIENT LIST</h2>
 
-        <div class="section">
-            <input type="radio" name="accordion-1" id="section-4" value="toggle" />
-            <label for="section-4"> <span>HOPS</span><i class="fa fa-search"></i></label>
-            <div class="content" id="hops-list-content">
-                <ul>
-                </ul>
-            </div>
-        </div>
+      <ol class="ingredients">
+        <li class="add grain">alabaster wheat</li>
+        <li class="add grain">denali amber</li>
+        <li class="add grain">hollow barley</li>
+        <li></li>
+        <li class="add hop">summit hops</li>
+        <li class="add hop">victory hops</li>
+        <li class="add hop">verdigris hops</li>
+        <li></li>
+        <li class="add yeast">revielle yeast</li>
+        <li class="add yeast">renard lambic</li>
+        <li class="add yeast">resitute yeast</li>
+      </ol>
 
-        <div class="section">
-            <input type="radio" name="accordion-1" id="section-5" value="toggle" />
-            <label for="section-5"> <span>YEAST</span><i class="fa fa-search"></i></label>
-            <div class="content" id="yeast-list-content">
-                <ul>
-                </ul>
-            </div>
-        </div>
+    </section>
 
-        <div class="section">
-            <input type="radio" name="accordion-1" id="section-6" value="toggle" />
-            <label for="section-6"> <span>ADDITIVES</span><i class="fa fa-search"></i></label>
-            <div class="content">
-                <ul>
-                </ul>
-            </div>
-        </div>
+    <section>
+      <h2>RECIPE</h2>
 
-    </div>
-</div>
-</body>
+      <ol class="recipe">
+      </ol>
+
+    </section>
+
+    <section>
+      <h2>SLIDERS</h2>
+
+      <ol class="sliders">
+      </ol>
+
+    </section>
+  </body>
+</html>
