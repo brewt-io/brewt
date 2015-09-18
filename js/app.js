@@ -31,5 +31,74 @@
 
     });
 
+    var recipeFermentables = [];
+    var recipeHops = [];
+
+    app.controller('FermentablesLibraryController', function() {
+        this.active = false;
+
+        this.toggleActive = function(){
+            this.active = !this.active;
+        };
+
+        this.load = function(){
+            return [
+                {name:'Crystal 20L', yieldDec:0.75, color:20},
+                {name:'Pale 2-Row', yieldDec:0.79, color:2},
+                {name:'Vienna', yieldDec:0.78, color:4},
+                {name:'Rauch', yieldDec:0.81, color:2},
+                {name:'Black', yieldDec:0.55, color:500}
+            ];
+        };
+
+        this.addFermentable = function(i){
+          recipeFermentables.push(this.lib[i]);
+        };
+
+        this.lib = this.load();
+
+    });
+
+    app.controller('HopsLibraryController', function() {
+        this.active = false;
+
+        this.toggleActive = function(){
+            this.active = !this.active;
+        };
+
+        this.load = function(){
+            return [
+                {name:'Fuggles', alphaAcidDec: 0.15},
+                {name:'Cascade', alphaAcidDec: 0.15},
+                {name:'Amarillo', alphaAcidDec: 0.15},
+                {name:'Victory', alphaAcidDec: 0.15},
+                {name:'Saaz', alphaAcidDec: 0.15}
+            ];
+        };
+
+        this.addHop = function(i){
+            recipeHops.push(this.lib[i]);
+        };
+
+        this.lib = this.load();
+
+    });
+
+    app.controller('FermentablesRecipeController', function() {
+
+        this.getFermentables = function(){
+            return recipeFermentables;
+        };
+
+    });
+    app.controller('HopsRecipeController', function() {
+
+        this.getHops = function(){
+            return recipeHops;
+        };
+
+    });
+
+
 })();
 

@@ -19,39 +19,52 @@
     <h1 class="title" contenteditable="true">New Recipe</h1>
 
     <section>
-
-      <div class="style" ng-controller="StyleController as styleCtrl" title={{styleCtrl.getActiveStyle().description}}>
-        <h2>{{styleCtrl.getActiveStyle().name}}</h2>
-        <button ng-click="styleCtrl.toggleSelectActive()">Select Style</button>
-        <div ng-repeat="style in styleCtrl.styles" ng-show="styleCtrl.selectActive">
-          <button ng-click="styleCtrl.select($index)">{{style.name}}</button>
-        </div>
+      <h2>INGREDIENTS LIBRARY</h2>
+      <div ng-controller="FermentablesLibraryController as fermlib">
+        <h3 ng-click="fermlib.toggleActive()">Fermentables</h3>
+          <ul>
+            <li ng-repeat="fermentable in fermlib.lib" ng-show="fermlib.active" ng-click="fermlib.addFermentable($index)">{{fermentable.name}}</li>
+          </ul>
       </div>
-
-
-      <h2>INGREDIENT LIST</h2>
-
-      <ol class="ingredients">
-        <li class="add grain">alabaster wheat</li>
-        <li class="add grain">denali amber</li>
-        <li class="add grain">hollow barley</li>
-        <li></li>
-        <li class="add hop">summit hops</li>
-        <li class="add hop">victory hops</li>
-        <li class="add hop">verdigris hops</li>
-        <li></li>
-        <li class="add yeast">revielle yeast</li>
-        <li class="add yeast">renard lambic</li>
-        <li class="add yeast">resitute yeast</li>
-      </ol>
-
+      <div ng-controller="HopsLibraryController as hopslib">
+        <h3 ng-click="hopslib.toggleActive()">Hops</h3>
+        <ul>
+          <li ng-repeat="hops in hopslib.lib" ng-show="hopslib.active" ng-click="hopslib.addHop($index)">{{hops.name}}</li>
+        </ul>
+      </div>
     </section>
 
     <section>
       <h2>RECIPE</h2>
 
-      <ol class="recipe">
-      </ol>
+        <section>
+          <div ng-controller="StyleController as styleCtrl" title={{styleCtrl.getActiveStyle().description}}>
+            <h3 ng-click="styleCtrl.toggleSelectActive()">Style: {{styleCtrl.getActiveStyle().name}}</h3>
+            <ul>
+              <li ng-repeat="style in styleCtrl.styles" ng-show="styleCtrl.selectActive" ng-click="styleCtrl.select($index)">{{style.name}}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div ng-controller="FermentablesRecipeController as fermListCtrl">
+            <h3>Fermentables:</h3>
+            <ul>
+              <li ng-repeat="ferm in fermListCtrl.getFermentables()">{{ferm.name}}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div ng-controller="HopsRecipeController as hopsListCtrl">
+            <h3>Hops:</h3>
+            <ul>
+              <li ng-repeat="hops in hopsListCtrl.getHops()">{{hops.name}}</li>
+            </ul>
+          </div>
+        </section>
+
+
 
     </section>
 
