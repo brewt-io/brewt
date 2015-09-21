@@ -8,7 +8,6 @@
     <script type="text/javascript" src="js/conversion.js"></script>
     <script type="text/javascript" src="js/ingredients.js"></script>
     <script type="text/javascript" src="js/recipe.js"></script>
-    <script type="text/javascript" src="js/ui.js"></script>
     <script type="text/javascript" src="lib/angular.min.js"></script>
     <script type="text/css" src="css/styles.css"></script>
   </head>
@@ -23,15 +22,31 @@
       <div ng-controller="FermentablesLibraryController as fermlib">
         <h3 ng-click="fermlib.toggleActive()">Fermentables</h3>
           <ul>
-            <li ng-repeat="fermentable in fermlib.lib" ng-show="fermlib.active" ng-click="fermlib.addFermentable($index)">{{fermentable.name}}</li>
+            <li ng-repeat="fermentable in fermlib.lib" ng-show="fermlib.active()" ng-click="fermlib.addFermentable($index)">{{fermentable.name}}</li>
           </ul>
       </div>
+
       <div ng-controller="HopsLibraryController as hopslib">
         <h3 ng-click="hopslib.toggleActive()">Hops</h3>
         <ul>
-          <li ng-repeat="hops in hopslib.lib" ng-show="hopslib.active" ng-click="hopslib.addHop($index)">{{hops.name}}</li>
+          <li ng-repeat="hops in hopslib.lib" ng-show="hopslib.active()" ng-click="hopslib.addHop($index)">{{hops.name}}</li>
         </ul>
       </div>
+
+      <div ng-controller="YeastLibraryController as yeastlib">
+        <h3 ng-click="yeastlib.toggleActive()">Yeast</h3>
+        <ul>
+          <li ng-repeat="yeast in yeastlib.lib" ng-show="yeastlib.active()" ng-click="yeastlib.setYeast($index)">{{yeast.name}}</li>
+        </ul>
+      </div>
+
+      <div ng-controller="MiscLibraryController as ctrl">
+        <h3 ng-click="ctrl.toggleActive()">Misc</h3>
+        <ul>
+          <li ng-repeat="misc in ctrl.lib" ng-show="ctrl.active()" ng-click="ctrl.addMisc($index)">{{misc.name}}</li>
+        </ul>
+      </div>
+
     </section>
 
     <section>
@@ -46,25 +61,41 @@
           </div>
         </section>
 
-        <section>
-          <div ng-controller="FermentablesRecipeController as fermListCtrl">
+        <div ng-controller="FermentablesRecipeController as fermListCtrl">
+          <section ng-show="fermListCtrl.getFermentables().length > 0">
             <h3>Fermentables:</h3>
             <ul>
-              <li ng-repeat="ferm in fermListCtrl.getFermentables()">{{ferm.name}}</li>
+              <li ng-repeat="ferm in fermListCtrl.getFermentables() track by $index">{{ferm.name}}</li>
             </ul>
-          </div>
-        </section>
+          </section>
+        </div>
 
-        <section>
-          <div ng-controller="HopsRecipeController as hopsListCtrl">
+        <div ng-controller="HopsRecipeController as hopsListCtrl">
+          <section ng-show="hopsListCtrl.getHops().length > 0">
             <h3>Hops:</h3>
             <ul>
-              <li ng-repeat="hops in hopsListCtrl.getHops()">{{hops.name}}</li>
+              <li ng-repeat="hops in hopsListCtrl.getHops() track by $index">{{hops.name}}</li>
             </ul>
-          </div>
-        </section>
+          <section>
+        </div>
 
+        <div ng-controller="YeastRecipeController as yeastListCtrl">
+          <section ng-show="yeastListCtrl.getYeast()">
+            <h3>Yeast:</h3>
+            <ul >
+              <li>{{yeastListCtrl.getYeast().name}}</li>
+            </ul>
+          </section>
+        </div>
 
+        <div ng-controller="MiscRecipeController as miscListCtrl">
+          <section ng-show="miscListCtrl.getMiscs().length > 0">
+            <h3>Misc:</h3>
+            <ul>
+              <li ng-repeat="misc in miscListCtrl.getMiscs() track by $index">{{misc.name}}</li>
+            </ul>
+          </section>
+        </div>
 
     </section>
 

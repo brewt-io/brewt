@@ -1,6 +1,13 @@
 (function (){
     var app = angular.module('brewt', []);
 
+    var activeLib = 0;
+
+    var recipeFermentables = [];
+    var recipeHops = [];
+    var recipeYeast;
+    var recipeMiscs = [];
+
     app.controller('StyleController', function() {
         var activeStyle = 0;
         this.selectActive = false;
@@ -31,14 +38,17 @@
 
     });
 
-    var recipeFermentables = [];
-    var recipeHops = [];
-
     app.controller('FermentablesLibraryController', function() {
-        this.active = false;
+        this.active = function(){
+            return activeLib == 1;
+        };
 
         this.toggleActive = function(){
-            this.active = !this.active;
+            if (activeLib == 1){
+              activeLib = 0;
+            }else{
+              activeLib = 1;
+            }
         };
 
         this.load = function(){
@@ -52,7 +62,44 @@
         };
 
         this.addFermentable = function(i){
-          recipeFermentables.push(this.lib[i]);
+            var fermentable = this.lib[i];
+            fermentable.timeCreated = Date.now();
+            recipeFermentables.push(fermentable);
+        };
+
+        this.lib = this.load();
+
+    });
+
+    app.controller('YeastLibraryController', function() {
+        this.active = function(){
+            return activeLib == 2;
+        };
+
+        this.toggleActive = function(){
+            if (activeLib == 2){
+              activeLib = 0;
+            }else{
+              activeLib = 2;
+            }
+        };
+
+
+
+        this.load = function(){
+            return [
+                {name:"California Ale Yeast", attenuation: 0.75},
+                {name:"English Ale Yeast", attenuation: 0.66},
+                {name:"Kolsch", attenuation: 0.75},
+                {name:"Belgian Strong Ale", attenuation: 0.76},
+                {name:"San Diego Super Yeast", attenuation: 0.80}
+            ];
+        };
+
+        this.setYeast = function(i){
+            newYeast = this.lib[i];
+            newYeast.timeCreated = Date.now();
+            recipeYeast = newYeast;
         };
 
         this.lib = this.load();
@@ -60,10 +107,16 @@
     });
 
     app.controller('HopsLibraryController', function() {
-        this.active = false;
+        this.active = function(){
+            return activeLib == 3;
+        };
 
         this.toggleActive = function(){
-            this.active = !this.active;
+            if (activeLib == 3){
+              activeLib = 0;
+            }else{
+              activeLib = 3;
+            }
         };
 
         this.load = function(){
@@ -84,6 +137,37 @@
 
     });
 
+    app.controller('MiscLibraryController', function() {
+        this.active = function(){
+            return activeLib == 4;
+        };
+
+        this.toggleActive = function(){
+            if (activeLib == 4){
+              activeLib = 0;
+            }else{
+              activeLib = 4;
+            }
+        };
+
+        this.load = function(){
+            return [
+                {name:'Apricot Extract'},
+                {name:'Calcium Chloride'},
+                {name:'Ginger Root'},
+                {name:'Irish Moss'},
+                {name:'Orange Peel, Bitter'}
+            ];
+        };
+
+        this.addMisc = function(i){
+            recipeMiscs.push(this.lib[i]);
+        };
+
+        this.lib = this.load();
+
+    });
+
     app.controller('FermentablesRecipeController', function() {
 
         this.getFermentables = function(){
@@ -91,6 +175,7 @@
         };
 
     });
+
     app.controller('HopsRecipeController', function() {
 
         this.getHops = function(){
@@ -99,6 +184,17 @@
 
     });
 
+    app.controller('YeastRecipeController', function() {
+        this.getYeast = function(){
+            return recipeYeast;
+        };
+    });
+
+    app.controller('MiscRecipeController', function() {
+        this.getMiscs = function(){
+            return recipeMiscs;
+        };
+    });
+
 
 })();
-
