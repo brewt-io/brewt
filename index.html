@@ -36,7 +36,7 @@
       <div ng-controller="YeastLibraryController as yeastlib">
         <h3 ng-click="yeastlib.toggleActive()">Yeast</h3>
         <ul>
-          <li ng-repeat="yeast in yeastlib.lib" ng-show="yeastlib.active()" ng-click="yeastlib.setYeast($index)">{{yeast.name}}</li>
+          <li ng-repeat="yeast in yeastlib.lib"  ng-show="yeastlib.active()" ng-click="yeastlib.setYeast($index)">{{yeast.name}}</li>
         </ul>
       </div>
 
@@ -53,7 +53,7 @@
       <h2>RECIPE</h2>
 
         <section>
-          <div ng-controller="StyleController as styleCtrl" title={{styleCtrl.getActiveStyle().description}}>
+          <div ng-controller="StyleController as styleCtrl" title={{styleCtrl.getActiveStyle().notes}}>
             <h3 ng-click="styleCtrl.toggleSelectActive()">Style: {{styleCtrl.getActiveStyle().name}}</h3>
             <ul>
               <li ng-repeat="style in styleCtrl.styles" ng-show="styleCtrl.selectActive" ng-click="styleCtrl.select($index)">{{style.name}}</li>
@@ -76,7 +76,7 @@
             <ul>
               <li ng-repeat="hops in hopsListCtrl.getHops() track by $index">{{hops.name}}</li>
             </ul>
-          <section>
+          </section>
         </div>
 
         <div ng-controller="YeastRecipeController as yeastListCtrl">
