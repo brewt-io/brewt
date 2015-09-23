@@ -294,6 +294,9 @@
         this.getFermentables = function(){
             return recipeFermentables;
         };
+        this.remove = function(i){
+            recipeFermentables.splice(i,1);
+        }
 
     });
 
@@ -302,6 +305,9 @@
         this.getHops = function(){
             return recipeHops;
         };
+        this.remove = function(i){
+            recipeHops.splice(i,1);
+        }
 
     });
 
@@ -309,12 +315,19 @@
         this.getYeast = function(){
             return recipeYeast;
         };
+        this.remove = function(){
+            recipeYeast = false;
+        }
     });
 
     app.controller('MiscRecipeController', function() {
         this.getMiscs = function(){
             return recipeMiscs;
         };
+        this.remove = function(i){
+            recipeMiscs.splice(i,1);
+        }
+
     });
 
 

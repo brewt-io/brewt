@@ -40,11 +40,17 @@ li:active {
 label:hover {
   color: #a8ca65;
 }
-section {
-  margin-top: 5em;
-  float: left;
-  margin-right: 12em;
+#library{
+    margin-top: 1em;
+    float: left;
+    width: 45%;
 }
+#recipe {
+    margin-top: 1em;
+    float: right;
+    width: 45%;
+}
+
 .remove-btn {
   border-radius: 50%;
   background-color: transparent;
@@ -82,4 +88,20 @@ section {
 }
 .details {
   color: red;
+}
+
+.fermentable {
+    color: darkgoldenrod;
+}
+
+.hop {
+    color: forestgreen;
+}
+
+.yeast {
+    color: rosybrown;
+}
+
+.misc {
+    color: lightslategrey;
 }

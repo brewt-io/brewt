@@ -9,7 +9,7 @@
     <script type="text/javascript" src="js/ingredients.js"></script>
     <script type="text/javascript" src="js/recipe.js"></script>
     <script type="text/javascript" src="lib/angular.min.js"></script>
-    <script type="text/css" src="css/styles.css"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
 
   <body>
@@ -17,7 +17,7 @@
 
     <h1 class="title" contenteditable="true">New Recipe</h1>
 
-    <section>
+    <section id="library">
       <h2>INGREDIENTS LIBRARY</h2>
       <div ng-controller="FermentablesLibraryController as fermlib">
         <h3 ng-click="fermlib.toggleActive()">Fermentables</h3>
@@ -49,62 +49,55 @@
 
     </section>
 
-    <section>
+    <section id="recipe">
       <h2>RECIPE</h2>
 
-        <section>
-          <div ng-controller="StyleController as styleCtrl" title={{styleCtrl.getActiveStyle().notes}}>
-            <h3 ng-click="styleCtrl.toggleSelectActive()">Style: {{styleCtrl.getActiveStyle().name}}</h3>
-            <ul>
-              <li ng-repeat="style in styleCtrl.styles" ng-show="styleCtrl.selectActive" ng-click="styleCtrl.select($index)">{{style.name}}</li>
-            </ul>
-          </div>
-        </section>
+      <div ng-controller="StyleController as styleCtrl" title={{styleCtrl.getActiveStyle().notes}}>
+        <h3 ng-click="styleCtrl.toggleSelectActive()">Style: {{styleCtrl.getActiveStyle().name}}</h3>
+        <ul>
+          <li ng-repeat="style in styleCtrl.styles" ng-show="styleCtrl.selectActive" ng-click="styleCtrl.select($index)">{{style.name}}</li>
+        </ul>
+      </div>
 
-        <div ng-controller="FermentablesRecipeController as fermListCtrl">
-          <section ng-show="fermListCtrl.getFermentables().length > 0">
-            <h3>Fermentables:</h3>
-            <ul>
-              <li ng-repeat="ferm in fermListCtrl.getFermentables() track by $index">{{ferm.name}}</li>
-            </ul>
-          </section>
-        </div>
+      <h3>Ingredients:</h3>
 
-        <div ng-controller="HopsRecipeController as hopsListCtrl">
-          <section ng-show="hopsListCtrl.getHops().length > 0">
-            <h3>Hops:</h3>
-            <ul>
-              <li ng-repeat="hops in hopsListCtrl.getHops() track by $index">{{hops.name}}</li>
-            </ul>
-          </section>
-        </div>
+      <div ng-controller="FermentablesRecipeController as fermListCtrl">
+        <ul ng-show="fermListCtrl.getFermentables().length > 0">
+          <li ng-repeat="ferm in fermListCtrl.getFermentables() track by $index" class="fermentable">
+            {{ferm.name}}
+            <button ng-click="fermListCtrl.remove($index)" class="remove-btn">×</button>
+          </li>
+        </ul>
+      </div>
 
-        <div ng-controller="YeastRecipeController as yeastListCtrl">
-          <section ng-show="yeastListCtrl.getYeast()">
-            <h3>Yeast:</h3>
-            <ul >
-              <li>{{yeastListCtrl.getYeast().name}}</li>
-            </ul>
-          </section>
-        </div>
+      <div ng-controller="HopsRecipeController as hopsListCtrl">
+        <ul ng-show="hopsListCtrl.getHops().length > 0">
+          <li ng-repeat="hops in hopsListCtrl.getHops() track by $index" class="hop">
+            {{hops.name}}
+            <button ng-click="hopsListCtrl.remove($index)" class="remove-btn">×</button>
+          </li>
+        </ul>
+      </div>
 
-        <div ng-controller="MiscRecipeController as miscListCtrl">
-          <section ng-show="miscListCtrl.getMiscs().length > 0">
-            <h3>Misc:</h3>
-            <ul>
-              <li ng-repeat="misc in miscListCtrl.getMiscs() track by $index">{{misc.name}}</li>
-            </ul>
-          </section>
-        </div>
+      <div ng-controller="YeastRecipeController as yeastListCtrl">
+        <ul ng-show="yeastListCtrl.getYeast()">
+          <li class="yeast">
+            {{yeastListCtrl.getYeast().name}}
+            <button ng-click="yeastListCtrl.remove()" class="remove-btn">×</button>
+          </li>
+        </ul>
+      </div>
 
-    </section>
-
-    <section>
-      <h2>SLIDERS</h2>
-
-      <ol class="sliders">
-      </ol>
+      <div ng-controller="MiscRecipeController as miscListCtrl">
+        <ul ng-show="miscListCtrl.getMiscs().length > 0">
+          <li ng-repeat="misc in miscListCtrl.getMiscs() track by $index" class="misc">
+            {{misc.name}}
+            <button ng-click="miscListCtrl.remove($index)" class="remove-btn">×</button>
+          </li>
+        </ul>
+      </div>
 
     </section>
+
   </body>
 </html>
