@@ -1,0 +1,107 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
+body {
+  color: #47525c;
+  background-color: #f0f0f0;
+  font-family: 'Open-sans', sans-serif;
+  -webkit-user-select: none;
+}
+main {
+  margin: 5em;
+}
+.title {
+  width: 100%;
+  text-align: center;
+  outline: 0;
+}
+.title:hover {
+  color: #aaa;
+  text-decoration: underline;
+}
+h1,
+h2 {
+  font-family: 'Montserrat', sans-serif;
+}
+td,
+label,
+li {
+  color: #aaa;
+  list-style-type: none;
+  line-height: 2em;
+  cursor: pointer;
+}
+li:hover {
+  color: #a8ca65;
+}
+li:active {
+  color: #a8ca65;
+}
+label:hover {
+  color: #a8ca65;
+}
+#library{
+    margin-top: 1em;
+    float: left;
+    width: 45%;
+}
+#recipe {
+    margin-top: 1em;
+    float: right;
+    width: 45%;
+}
+
+.remove-btn {
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  color: #aaa;
+  height: 2em;
+  width: 2em;
+  position: relative;
+  top: -.2em;
+  right: -1em;
+}
+.remove-btn:hover {
+  border-radius: 50%;
+  background-color: #f2836b;
+  color: white;
+}
+.recipe li:hover {
+  color: #f2836b;
+}
+.batman:hover {
+  color: #f2836b;
+}
+.style input[type="radio"] {
+  display: none;
+}
+.style label {
+  display: block;
+}
+.style input[type="radio"]:checked + label {
+  color: #fefefe;
+  background-color: #a8ca65;
+  margin-left: -10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.details {
+  color: red;
+}
+
+.fermentable {
+    color: darkgoldenrod;
+}
+
+.hop {
+    color: forestgreen;
+}
+
+.yeast {
+    color: rosybrown;
+}
+
+.misc {
+    color: lightslategrey;
+}
