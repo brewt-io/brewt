@@ -1,0 +1,4 @@
+<li ng-repeat="ferm in fermCtrl.getFermentables() track by $index" class="fermentable">
+  {{ferm.name}}
+  <button ng-click="fermCtrl.remove($index)" class="remove-btn">×</button>
+</li>

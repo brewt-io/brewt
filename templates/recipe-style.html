@@ -1,0 +1,8 @@
+<section>
+  <div title={{styleCtrl.getSelected().description}}>
+    <h3 ng-click="styleCtrl.toggleActive()">Style: {{styleCtrl.getSelected().name}}</h3>
+    <ul>
+      <li ng-repeat="style in styleCtrl.list" ng-show="styleCtrl.selectActive" ng-click="styleCtrl.select($index)">{{style.name}}</li>
+    </ul>
+  </div>
+</section>

@@ -8,67 +8,6 @@
     var recipeYeast;
     var recipeMiscs = [];
 
-    app.controller('StyleController', function($scope, $http) {
-        var activeStyle = 0;
-        this.selectActive = false;
-
-
-        this.getActiveStyle = function(){
-          return this.styles[activeStyle];
-        };
-
-        this.toggleSelectActive = function(){
-          this.selectActive = !this.selectActive;
-        };
-
-        this.select = function(i){
-            activeStyle = i;
-            this.toggleSelectActive();
-        };
-        this.loadStyles = function(){
-            styles = [];
-            $http.get("data/styles.json").
-                success(function(res){
-                    for (var i = 0; i < res.STYLES.length; i++){
-                        var s = {
-                            name: res.STYLES[i].NAME,
-                            version: parseInt(res.STYLES[i].VERSION),
-                            category: res.STYLES[i].CATEGORY,
-                            categoryNumber: parseInt(res.STYLES[i].CATEGORY_NUMBER),
-                            styleLetter: res.STYLES[i].STYLE_LETTER,
-                            styleGuide: res.STYLES[i].STYLE_GUIDE,
-                            type: res.STYLES[i].TYPE,
-                            notes: res.STYLES[i].NOTES,
-                            profile: res.STYLES[i].PROFILE,
-                            ingredients: res.STYLES[i].INGREDIENTS,
-                            examples: res.STYLES[i].EXAMPLES,
-
-                            ogMin: parseFloat(res.STYLES[i].OG_MIN),
-                            ogMax: parseFloat(res.STYLES[i].OG_MAX),
-                            fgMin: parseFloat(res.STYLES[i].FG_MIN),
-                            fgMax: parseFloat(res.STYLES[i].FG_MAX),
-                            ibuMin: parseFloat(res.STYLES[i].IBU_MIN),
-                            ibuMax: parseFloat(res.STYLES[i].IBU_MAX),
-                            colorMin: parseFloat(res.STYLES[i].COLOR_MIN),
-                            colorMax: parseFloat(res.STYLES[i].COLOR_MAX),
-                            carbMin: parseFloat(res.STYLES[i].CARB_MIN),
-                            carbMax: parseFloat(res.STYLES[i].CARB_MAX),
-                            abvMin: parseFloat(res.STYLES[i].ABV_MIN),
-                            abvMax: parseFloat(res.STYLES[i].ABV_MAX)
-                        };
-                        styles.push(s);
-                    }
-                }).
-                error(function(msg){
-                    console.log(msg);
-                });
-            return styles;
-        };
-
-        this.styles = this.loadStyles();
-
-    });
-
     app.controller('FermentablesLibraryController', function($scope, $http) {
         this.active = function(){
             return activeLib == 1;
@@ -289,44 +228,140 @@
 
     });
 
-    app.controller('FermentablesRecipeController', function() {
+    app.directive('recipeStyle', function($http) {
+        return {
+            restrict: 'E',
+            templateUrl:'templates/recipe-style.html',
+            controller: function(){
+                var activeStyle = 0;
+                this.selectActive = false;
 
-        this.getFermentables = function(){
-            return recipeFermentables;
+
+                this.getSelected = function(){
+                    return this.list[activeStyle];
+                };
+
+                this.toggleActive = function(){
+                    this.selectActive = !this.selectActive;
+                };
+
+                this.select = function(i){
+                    activeStyle = i;
+                    this.toggleActive();
+                };
+                this.load = function(){
+                    styles = [];
+                    $http.get("data/styles.json").
+                        success(function(res){
+                            for (var i = 0; i < res.STYLES.length; i++){
+                                var s = {
+                                    name: res.STYLES[i].NAME,
+                                    version: parseInt(res.STYLES[i].VERSION),
+                                    category: res.STYLES[i].CATEGORY,
+                                    categoryNumber: parseInt(res.STYLES[i].CATEGORY_NUMBER),
+                                    styleLetter: res.STYLES[i].STYLE_LETTER,
+                                    styleGuide: res.STYLES[i].STYLE_GUIDE,
+                                    type: res.STYLES[i].TYPE,
+                                    notes: res.STYLES[i].NOTES,
+                                    profile: res.STYLES[i].PROFILE,
+                                    ingredients: res.STYLES[i].INGREDIENTS,
+                                    examples: res.STYLES[i].EXAMPLES,
+
+                                    ogMin: parseFloat(res.STYLES[i].OG_MIN),
+                                    ogMax: parseFloat(res.STYLES[i].OG_MAX),
+                                    fgMin: parseFloat(res.STYLES[i].FG_MIN),
+                                    fgMax: parseFloat(res.STYLES[i].FG_MAX),
+                                    ibuMin: parseFloat(res.STYLES[i].IBU_MIN),
+                                    ibuMax: parseFloat(res.STYLES[i].IBU_MAX),
+                                    colorMin: parseFloat(res.STYLES[i].COLOR_MIN),
+                                    colorMax: parseFloat(res.STYLES[i].COLOR_MAX),
+                                    carbMin: parseFloat(res.STYLES[i].CARB_MIN),
+                                    carbMax: parseFloat(res.STYLES[i].CARB_MAX),
+                                    abvMin: parseFloat(res.STYLES[i].ABV_MIN),
+                                    abvMax: parseFloat(res.STYLES[i].ABV_MAX)
+                                };
+                                styles.push(s);
+                            }
+                        }).
+                        error(function(msg){
+                            console.log(msg);
+                        });
+                    return styles;
+                };
+
+                this.list = this.load();
+
+
+            },
+            controllerAs:'styleCtrl'
         };
-        this.remove = function(i){
-            recipeFermentables.splice(i,1);
-        }
-
     });
 
-    app.controller('HopsRecipeController', function() {
+    app.directive('recipeFermentables', function() {
+        return {
+            restrict: 'E',
+            templateUrl:'templates/recipe-fermentables.html',
+            controller: function(){
+                this.getFermentables = function(){
+                    return recipeFermentables;
+                };
+                this.remove = function(i){
+                    recipeFermentables.splice(i,1);
+                }
 
-        this.getHops = function(){
-            return recipeHops;
+
+            },
+            controllerAs:'fermCtrl'
         };
-        this.remove = function(i){
-            recipeHops.splice(i,1);
-        }
-
     });
 
-    app.controller('YeastRecipeController', function() {
-        this.getYeast = function(){
-            return recipeYeast;
+    app.directive('recipeHops', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/recipe-hops.html',
+            controller: function(){
+                this.getHops = function(){
+                    return recipeHops;
+                };
+                this.remove = function(i){
+                    recipeHops.splice(i,1);
+                }
+            },
+            controllerAs:'hopsCtrl'
         };
-        this.remove = function(){
-            recipeYeast = false;
-        }
     });
 
-    app.controller('MiscRecipeController', function() {
-        this.getMiscs = function(){
-            return recipeMiscs;
+    app.directive('recipeYeast', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/recipe-yeast.html',
+            controller: function(){
+                this.getYeast = function(){
+                    return recipeYeast;
+                };
+                this.remove = function(){
+                    recipeYeast = false;
+                }
+            },
+            controllerAs: 'yeastCtrl'
         };
-        this.remove = function(i){
-            recipeMiscs.splice(i,1);
-        }
+    });
+
+    app.directive('recipeMiscs', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/recipe-miscs.html',
+            controller:function(){
+                this.getMiscs = function(){
+                    return recipeMiscs;
+                };
+                this.remove = function(i){
+                    recipeMiscs.splice(i,1);
+                }
+            },
+            controllerAs:'miscsCtrl'
+
+        };
 
     });
 

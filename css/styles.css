@@ -19,6 +19,10 @@ main {
   color: #aaa;
   text-decoration: underline;
 }
+
+h1, h2, h3  {
+    cursor : pointer;
+}
 h1,
 h2 {
   font-family: 'Montserrat', sans-serif;

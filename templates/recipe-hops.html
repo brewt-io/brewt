@@ -1,0 +1,4 @@
+<li ng-repeat="hops in hopsCtrl.getHops() track by $index" class="hop">
+  {{hops.name}}
+  <button ng-click="hopsCtrl.remove($index)" class="remove-btn">×</button>
+</li>

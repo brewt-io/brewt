@@ -52,50 +52,16 @@
     <section id="recipe">
       <h2>RECIPE</h2>
 
-      <div ng-controller="StyleController as styleCtrl" title={{styleCtrl.getActiveStyle().notes}}>
-        <h3 ng-click="styleCtrl.toggleSelectActive()">Style: {{styleCtrl.getActiveStyle().name}}</h3>
-        <ul>
-          <li ng-repeat="style in styleCtrl.styles" ng-show="styleCtrl.selectActive" ng-click="styleCtrl.select($index)">{{style.name}}</li>
-        </ul>
-      </div>
+      <recipe-style></recipe-style>
 
       <h3>Ingredients:</h3>
 
-      <div ng-controller="FermentablesRecipeController as fermListCtrl">
-        <ul ng-show="fermListCtrl.getFermentables().length > 0">
-          <li ng-repeat="ferm in fermListCtrl.getFermentables() track by $index" class="fermentable">
-            {{ferm.name}}
-            <button ng-click="fermListCtrl.remove($index)" class="remove-btn">×</button>
-          </li>
-        </ul>
-      </div>
-
-      <div ng-controller="HopsRecipeController as hopsListCtrl">
-        <ul ng-show="hopsListCtrl.getHops().length > 0">
-          <li ng-repeat="hops in hopsListCtrl.getHops() track by $index" class="hop">
-            {{hops.name}}
-            <button ng-click="hopsListCtrl.remove($index)" class="remove-btn">×</button>
-          </li>
-        </ul>
-      </div>
-
-      <div ng-controller="YeastRecipeController as yeastListCtrl">
-        <ul ng-show="yeastListCtrl.getYeast()">
-          <li class="yeast">
-            {{yeastListCtrl.getYeast().name}}
-            <button ng-click="yeastListCtrl.remove()" class="remove-btn">×</button>
-          </li>
-        </ul>
-      </div>
-
-      <div ng-controller="MiscRecipeController as miscListCtrl">
-        <ul ng-show="miscListCtrl.getMiscs().length > 0">
-          <li ng-repeat="misc in miscListCtrl.getMiscs() track by $index" class="misc">
-            {{misc.name}}
-            <button ng-click="miscListCtrl.remove($index)" class="remove-btn">×</button>
-          </li>
-        </ul>
-      </div>
+      <ul>
+        <recipe-fermentables></recipe-fermentables>
+        <recipe-hops></recipe-hops>
+        <recipe-yeast></recipe-yeast>
+        <recipe-miscs></recipe-miscs>
+      </ul>
 
     </section>
 

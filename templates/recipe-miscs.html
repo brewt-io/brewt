@@ -1,0 +1,4 @@
+<li ng-repeat="misc in miscsCtrl.getMiscs() track by $index" class="misc">
+  {{misc.name}}
+  <button ng-click="miscsCtrl.remove($index)" class="remove-btn">×</button>
+</li>
