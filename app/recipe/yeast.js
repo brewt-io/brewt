@@ -4,7 +4,7 @@ angular.module("brewt").directive('recipeYeast', function() {
         scope:{
             recipeYeast:"="
         },
-        templateUrl: 'templates/recipe/yeast.html',
+        templateUrl: 'app/recipe/yeast.html',
         controller: function($scope){
             this.getYeast = function(){
                 return $scope.recipeYeast;

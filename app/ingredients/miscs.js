@@ -5,7 +5,7 @@ angular.module('brewt').directive('libraryMiscs', function(){
             activeLib:"=",
             recipeMiscs:"="
         },
-        templateUrl: 'templates/ingredients/miscs.html',
+        templateUrl: 'app/ingredients/miscs.html',
         controller: function($scope, $http){
             this.active = function(){
                 return $scope.activeLib == 4;

@@ -1,7 +1,7 @@
 angular.module('brewt').directive('recipeStyle', function($http) {
     return {
         restrict: 'E',
-        templateUrl:'templates/recipe/style.html',
+        templateUrl:'app/recipe/style.html',
         controller: function(){
             var activeStyle = 0;
             this.selectActive = false;

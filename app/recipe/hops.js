@@ -4,7 +4,7 @@ angular.module("brewt").directive('recipeHops', function() {
         scope:{
           recipeHops:"="
         },
-        templateUrl: 'templates/recipe/hops.html',
+        templateUrl: 'app/recipe/hops.html',
         controller: function($scope){
             this.getHops = function(){
                 return $scope.recipeHops;

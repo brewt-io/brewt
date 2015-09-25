@@ -5,7 +5,7 @@ angular.module('brewt').directive('libraryYeasts', function(){
             activeLib:"=",
             recipeYeast:"="
         },
-        templateUrl: 'templates/ingredients/yeasts.html',
+        templateUrl: 'app/ingredients/yeasts.html',
         controller: function($scope, $http){
 
             this.active = function(){

@@ -1,7 +1,7 @@
 angular.module('brewt').directive('libraryHops', function(){
     return {
         restrict: 'E',
-        templateUrl: 'templates/ingredients/hops.html',
+        templateUrl: 'app/ingredients/hops.html',
         scope: {
             activeLib:"=",
             recipeHops:"="
