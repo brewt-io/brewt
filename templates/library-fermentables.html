@@ -1,0 +1,4 @@
+<h3 ng-click="fermCtrl.toggleActive()">Fermentables</h3>
+<ul>
+  <li ng-repeat="fermentable in fermCtrl.lib" ng-show="fermCtrl.active()" ng-click="fermCtrl.addFermentable($index)">{{fermentable.name}}</li>
+</ul>

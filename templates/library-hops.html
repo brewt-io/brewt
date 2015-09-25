@@ -1,0 +1,4 @@
+<h3 ng-click="hopsCtrl.toggleActive()">Hops</h3>
+<ul>
+  <li ng-repeat="hops in hopsCtrl.lib" ng-show="hopsCtrl.active()" ng-click="hopsCtrl.addHop($index)">{{hops.name}}</li>
+</ul>

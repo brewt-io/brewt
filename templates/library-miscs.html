@@ -1,0 +1,4 @@
+<h3 ng-click="miscsCtrl.toggleActive()">Misc</h3>
+<ul>
+  <li ng-repeat="misc in miscsCtrl.lib" ng-show="miscsCtrl.active()" ng-click="miscsCtrl.addMisc($index)">{{misc.name}}</li>
+</ul>

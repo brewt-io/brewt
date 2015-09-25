@@ -17,53 +17,43 @@
 
     <h1 class="title" contenteditable="true">New Recipe</h1>
 
-    <section id="library">
-      <h2>INGREDIENTS LIBRARY</h2>
-      <div ng-controller="FermentablesLibraryController as fermlib">
-        <h3 ng-click="fermlib.toggleActive()">Fermentables</h3>
-          <ul>
-            <li ng-repeat="fermentable in fermlib.lib" ng-show="fermlib.active()" ng-click="fermlib.addFermentable($index)">{{fermentable.name}}</li>
-          </ul>
-      </div>
+    <div ng-controller="RecipeController">
+      <section id="library">
+        <h2>INGREDIENTS LIBRARY</h2>
 
-      <div ng-controller="HopsLibraryController as hopslib">
-        <h3 ng-click="hopslib.toggleActive()">Hops</h3>
+        <library-fermentables active-lib="activeLibrary"
+                              recipe-fermentables="recipeFermentables">
+        </library-fermentables>
+
+        <library-hops active-lib="activeLibrary"
+                      recipe-hops="recipeHops">
+        </library-hops>
+
+        <library-yeasts active-lib="activeLibrary"
+                        recipe-yeast="recipeYeast">
+        </library-yeasts>
+
+        <library-miscs active-lib="activeLibrary"
+                       recipe-miscs="recipeMiscs">
+        </library-miscs>
+      </section>
+
+      <section id="recipe">
+        <h2>RECIPE</h2>
+
+        <recipe-style></recipe-style>
+
+        <h3>Ingredients:</h3>
+
         <ul>
-          <li ng-repeat="hops in hopslib.lib" ng-show="hopslib.active()" ng-click="hopslib.addHop($index)">{{hops.name}}</li>
+          <recipe-fermentables recipe-fermentables="recipeFermentables"></recipe-fermentables>
+          <recipe-hops recipe-hops="recipeHops"></recipe-hops>
+          <recipe-yeast recipe-yeast="recipeYeast"></recipe-yeast>
+          <recipe-miscs recipe-miscs="recipeMiscs"></recipe-miscs>
         </ul>
-      </div>
 
-      <div ng-controller="YeastLibraryController as yeastlib">
-        <h3 ng-click="yeastlib.toggleActive()">Yeast</h3>
-        <ul>
-          <li ng-repeat="yeast in yeastlib.lib"  ng-show="yeastlib.active()" ng-click="yeastlib.setYeast($index)">{{yeast.name}}</li>
-        </ul>
-      </div>
-
-      <div ng-controller="MiscLibraryController as ctrl">
-        <h3 ng-click="ctrl.toggleActive()">Misc</h3>
-        <ul>
-          <li ng-repeat="misc in ctrl.lib" ng-show="ctrl.active()" ng-click="ctrl.addMisc($index)">{{misc.name}}</li>
-        </ul>
-      </div>
-
-    </section>
-
-    <section id="recipe">
-      <h2>RECIPE</h2>
-
-      <recipe-style></recipe-style>
-
-      <h3>Ingredients:</h3>
-
-      <ul>
-        <recipe-fermentables></recipe-fermentables>
-        <recipe-hops></recipe-hops>
-        <recipe-yeast></recipe-yeast>
-        <recipe-miscs></recipe-miscs>
-      </ul>
-
-    </section>
+      </section>
+    </div>
 
   </body>
 </html>

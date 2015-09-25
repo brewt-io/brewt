@@ -1,0 +1,4 @@
+<h3 ng-click="yeastsCtrl.toggleActive()">Yeast</h3>
+<ul>
+  <li ng-repeat="yeast in yeastsCtrl.lib"  ng-show="yeastsCtrl.active()" ng-click="yeastsCtrl.setYeast($index)">{{yeast.name}}</li>
+</ul>
