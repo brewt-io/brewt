@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Ion.RangeSlider - test</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
+
+    <style media="screen">
+
+    .slider {
+      /*margin: 1em ;*/
+      line-height: 50px;
+    }
+
+    #range_01_current {
+      top: 10px;
+      position: fixed;
+    }
+
+    </style>
+
+</head>
+<body>
+
+
+<!-- Page contents -->
+<div style="position: relative; padding: 200px;">
+
+    <div class="slider">Hoppiness (Alpha Acid %)
+        <input type="text" id="range_01" value="" name="range" />
+        <input type="text" id="range_01_current" value="" name="range" />
+    </div>
+    <div class="slider">Bitterness (IBU)
+        <input type="text" id="range_02" value="" name="range" />
+        <input type="text" id="range_02_current" value="" name="range" />
+    </div>
+    <div class="slider">Color (SRM)
+        <input type="text" id="range_03" value="" name="range" />
+        <input type="text" id="range_03_current" value="" name="range" />
+    </div>
+    <div class="slider">Alcohol (ABV)
+        <input type="text" id="range_04" value="" name="range" />
+        <input type="text" id="range_04_current" value="" name="range" />
+    </div>
+    <div class="slider">Balance (IBU/GU)
+        <input type="text" id="range_05" value="" name="range" />
+        <input type="text" id="range_05_current" value="" name="range" />
+    </div>
+
+</div>
+
+
+
+<!-- All JS -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/ion.rangeSlider.js"></script>
+
+<script>
+
+    $(function () {
+
+      $("#range_01").ionRangeSlider({
+          type: "double",
+          grid: true,
+          min: 0,
+          max: 100,
+          from: 25,
+          to: 80,
+          suffix: "$"
+      });
+
+      $("#range_01_current").ionRangeSlider({
+        hide_min_max: true,
+        hide_from_to: false,
+        type: "single",
+        grid: false,
+        min: 0,
+        max: 100,
+        from: 50,
+        to: 50,
+        prefix: ""
+      });
+
+      //
+
+      $("#range_02").ionRangeSlider({
+          type: "triple",
+          grid: true,
+          min: 0,
+          max: 100,
+          from: 0,
+          to: 75,
+          prefix: ""
+      });
+
+      $("#range_02_current").ionRangeSlider({
+        hide_min_max: true,
+        hide_from_to: false,
+        type: "single",
+        grid: false,
+        min: 0,
+        max: 100,
+        from: 20,
+
+        prefix: ""
+      });
+
+      //
+
+      $("#range_03").ionRangeSlider({
+          type: "double",
+          grid: true,
+          min: 0,
+          max: 100,
+          from: 20,
+          to: 80,
+          prefix: ""
+      });
+
+      $("#range_03_current").ionRangeSlider({
+        hide_min_max: true,
+        hide_from_to: false,
+        type: "single",
+        grid: false,
+        min: 0,
+        max: 100,
+        from: 50,
+        to: 50,
+        prefix: ""
+      });
+
+      //
+
+      $("#range_04").ionRangeSlider({
+          type: "double",
+          grid: true,
+          min: 0,
+          max: 100,
+          from: 25,
+          to: 50,
+          prefix: ""
+      });
+
+      $("#range_04_current").ionRangeSlider({
+        hide_min_max: true,
+        hide_from_to: false,
+        type: "single",
+        grid: false,
+        min: 0,
+        max: 100,
+        from: 40,
+        prefix: ""
+      });
+
+      //
+
+      $("#range_05").ionRangeSlider({
+          type: "double",
+          grid: true,
+          min: 0,
+          max: 100,
+          from: 25,
+          to: 75,
+          prefix: ""
+      });
+
+      $("#range_05_current").ionRangeSlider({
+        hide_min_max: true,
+        hide_from_to: false,
+        type: "single",
+        grid: false,
+        min: 0,
+        max: 100,
+        from: 50,
+        prefix: ""
+      });
+
+    });
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
