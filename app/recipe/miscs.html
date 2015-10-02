@@ -1,4 +1,21 @@
-<li ng-repeat="misc in miscsCtrl.getMiscs() track by $index" class="misc">
-  {{misc.name}}
-  <button ng-click="miscsCtrl.remove($index)" class="remove-btn">×</button>
-</li>
+<table width="90%">
+
+  <tr ng-repeat="misc in miscsCtrl.getMiscs() track by $index">
+    <td class="misc">
+      {{misc.name}}
+    </td>
+    <td>
+      <label>
+        <input ng-model="misc.amount" name="amount" type="number" step="0.125" min="0"/><span> kg</span>
+      </label>
+    </td>
+    <td>
+      <label>
+        <input ng-model="misc.time" name="time" type="number" step="1" min="0"/><span> min</span>
+      </label>
+    </td>
+    <td>
+      <button ng-click="miscsCtrl.remove($index)" class="remove-btn">×</button>
+    </td>
+  </tr>
+</table>

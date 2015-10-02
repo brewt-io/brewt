@@ -5,4 +5,45 @@
       <li ng-repeat="style in styleCtrl.list" ng-show="styleCtrl.selectActive" ng-click="styleCtrl.select($index)">{{style.name}}</li>
     </ul>
   </div>
+
+  <table width="60%">
+    <tr>
+      <td>Property</td>
+      <td>Min</td>
+      <td>Max</td>
+      <td>Recipe</td>
+    </tr>
+    <tr>
+      <td>OG</td>
+      <td>{{styleCtrl.getSelected().ogMin}}</td>
+      <td>{{styleCtrl.getSelected().ogMax}}</td>
+      <td>???</td>
+    </tr>
+    <tr>
+      <td>FG</td>
+      <td>{{styleCtrl.getSelected().fgMin}}</td>
+      <td>{{styleCtrl.getSelected().fgMax}}</td>
+      <td>???</td>
+    </tr>
+    <tr>
+      <td>ABV</td>
+      <td>{{styleCtrl.getSelected().abvMin}}</td>
+      <td>{{styleCtrl.getSelected().abvMax}}</td>
+      <td>???</td>
+    </tr>
+    <tr>
+      <td>IBU</td>
+      <td>{{styleCtrl.getSelected().ibuMin}}</td>
+      <td>{{styleCtrl.getSelected().ibuMax}}</td>
+      <td>???</td>
+    </tr>
+    <tr>
+      <td>SRM</td>
+      <td>{{styleCtrl.getSelected().colorMin}}</td>
+      <td>{{styleCtrl.getSelected().colorMax}}</td>
+      <td>???</td>
+    </tr>
+  </table>
+
+
 </section>

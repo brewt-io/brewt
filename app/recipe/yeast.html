@@ -1,4 +1,10 @@
-<li class="yeast" ng-show="yeastCtrl.getYeast()">
-  {{yeastCtrl.getYeast().name}}
-  <button ng-click="yeastCtrl.remove()" class="remove-btn">×</button>
-</li>
+<table width="90%">
+  <tr ng-show="yeastCtrl.getYeast()">
+    <td class="yeast" >
+      {{yeastCtrl.getYeast().name}}
+    </td>
+    <td>
+      <button ng-click="yeastCtrl.remove()" class="remove-btn">×</button>
+    </td>
+  </tr>
+</table>

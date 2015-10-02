@@ -8,6 +8,7 @@ angular.module('brewt').directive('libraryHops', function(){
         },
         controller: function($scope, $http){
 
+
             this.active = function(){
                 return $scope.activeLib == 3;
             };
@@ -30,9 +31,11 @@ angular.module('brewt').directive('libraryHops', function(){
                                 version: parseInt(res.HOPS[i].VERSION),
                                 origin: res.HOPS[i].ORIGIN,
                                 alpha: parseFloat(res.HOPS[i].ALPHA),
-                                amount: parseFloat(res.HOPS[i].AMOUNT),
+                                //amount: parseFloat(res.HOPS[i].AMOUNT),
+                                amount: 0.05,
                                 use: res.HOPS[i].USE,
-                                time: parseFloat(res.HOPS[i].TIME),
+                                //time: parseFloat(res.HOPS[i].TIME),
+                                time: 60,
                                 notes: res.HOPS[i].NOTES,
                                 type: res.HOPS[i].TYPE,
                                 form: res.HOPS[i].FORM,
