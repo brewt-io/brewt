@@ -8,7 +8,6 @@ angular.module('brewt').directive('libraryFermentables', function(){
         templateUrl: 'app/ingredients/fermentables.html',
         controller: function($scope, $http){
             this.active = function(){
-                console.log($scope.activeLib);
                 return $scope.activeLib == 1;
             };
 
@@ -29,7 +28,8 @@ angular.module('brewt').directive('libraryFermentables', function(){
                                 name: res.FERMENTABLES[i].NAME,
                                 version: parseInt(res.FERMENTABLES[i].VERSION),
                                 type: res.FERMENTABLES[i].TYPE,
-                                amount: parseFloat(res.FERMENTABLES[i].AMOUNT),
+                                //amount: parseFloat(res.FERMENTABLES[i].AMOUNT),
+                                amount: 1,
                                 yieldPer: parseFloat(res.FERMENTABLES[i].YIELD),
                                 color: parseFloat(res.FERMENTABLES[i].COLOR),
                                 addAfterBoil: "TRUE" == res.FERMENTABLES[i].ADD_AFTER_BOIL,
@@ -58,10 +58,10 @@ angular.module('brewt').directive('libraryFermentables', function(){
                 return fermentables;
             };
 
-            this.addFermentable = function(i){
-                var fermentable = this.lib[i];
-                fermentable.timeCreated = Date.now();
-                $scope.recipeFermentables.push(fermentable);
+            this.addFermentable = function(ferm){
+                var newFermentable = JSON.parse(JSON.stringify(this.lib[this.lib.indexOf(ferm)]));
+                newFermentable.timeCreated = Date.now();
+                $scope.recipeFermentables.push(newFermentable);
             };
 
             this.lib = this.load();

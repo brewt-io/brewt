@@ -10,11 +10,11 @@ angular.module("brewt").directive('recipeFermentables', function() {
                 return $scope.recipeFermentables;
             };
             this.remove = function(i){
+                console.log(i);
                 $scope.recipeFermentables.splice(i,1);
-            }
-
-
+            };
         },
         controllerAs:'fermCtrl'
     };
 });
+

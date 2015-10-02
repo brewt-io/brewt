@@ -6,6 +6,8 @@ angular.module("brewt").directive('recipeHops', function() {
         },
         templateUrl: 'app/recipe/hops.html',
         controller: function($scope){
+            $scope.recipeHops = [];
+
             this.getHops = function(){
                 return $scope.recipeHops;
             };

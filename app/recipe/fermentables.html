@@ -1,4 +1,15 @@
-<li ng-repeat="ferm in fermCtrl.getFermentables() track by $index" class="fermentable">
-  {{ferm.name}}
-  <button ng-click="fermCtrl.remove($index)" class="remove-btn">×</button>
-</li>
+<table width="90%">
+  <tr ng-repeat="ferm in fermCtrl.getFermentables() track by $index">
+    <td width="60%" class="fermentable">
+      {{ferm.name}}
+    </td>
+    <td>
+      <label>
+        <input ng-model="ferm.amount" name="amount" type="number" step="0.125" min="0"/><span> kg</span>
+      </label>
+    </td>
+    <td>
+      <button ng-click="fermCtrl.remove(ferm)" class="remove-btn">×</button>
+    </td>
+  </tr>
+</table>

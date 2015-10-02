@@ -1,4 +1,20 @@
-<li ng-repeat="hops in hopsCtrl.getHops() track by $index" class="hop">
-  {{hops.name}}
-  <button ng-click="hopsCtrl.remove($index)" class="remove-btn">×</button>
-</li>
+<table width="90%">
+  <tr ng-repeat="hop in hopsCtrl.getHops() track by $index">
+    <td width="40%" class="hop">
+      {{hop.name}}
+    </td>
+    <td>
+      <label>
+        <input ng-model="hop.amount" name="amount" type="number" step="0.01" min="0" width="100px"/><span> kg</span>
+      </label>
+    </td>
+    <td>
+      <label>
+        <input ng-model="hop.time" name="time" type="number" step="1" min="0"/><span> min</span>
+      </label>
+    </td>
+    <td>
+      <button ng-click="hopsCtrl.remove($index)" class="remove-btn">×</button>
+    </td>
+  </tr>
+</table>
