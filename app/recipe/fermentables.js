@@ -1,17 +1,15 @@
 angular.module("brewt").directive('recipeFermentables', function() {
     return {
         restrict: 'E',
-        scope: {
-            recipeFermentables:"="
-        },
         templateUrl:'app/recipe/fermentables.html',
-        controller: function($scope){
+        controller: function(Recp){
             this.getFermentables = function(){
-                return $scope.recipeFermentables;
+                return Recp.grains;
             };
-            this.remove = function(i){
-                console.log(i);
-                $scope.recipeFermentables.splice(i,1);
+            this.remove = function(g){
+                ferms = Recp.grains;
+                i = ferms.indexOf(g);
+                ferms.splice(i,1);
             };
         },
         controllerAs:'fermCtrl'

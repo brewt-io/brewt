@@ -3,10 +3,9 @@ angular.module('brewt').directive('libraryHops', function(){
         restrict: 'E',
         templateUrl: 'app/ingredients/hops.html',
         scope: {
-            activeLib:"=",
-            recipeHops:"="
+            activeLib:"="
         },
-        controller: function($scope, $http){
+        controller: function($scope, $http, Recp){
 
 
             this.active = function(){
@@ -53,7 +52,7 @@ angular.module('brewt').directive('libraryHops', function(){
             };
 
             this.addHop = function(i){
-                $scope.recipeHops.push(this.lib[i]);
+                Recp.hops.push(this.lib[i]);
             };
 
             this.lib = this.load();

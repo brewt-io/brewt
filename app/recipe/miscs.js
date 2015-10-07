@@ -1,16 +1,13 @@
 angular.module("brewt").directive('recipeMiscs', function() {
     return {
         restrict: 'E',
-        scope:{
-            recipeMiscs:"="
-        },
         templateUrl: 'app/recipe/miscs.html',
-        controller:function($scope){
+        controller:function(Recp){
             this.getMiscs = function(){
-                return $scope.recipeMiscs;
+                return Recp.miscs;
             };
             this.remove = function(i){
-                $scope.recipeMiscs.splice(i,1);
+                Recp.miscs.splice(i,1);
             }
         },
         controllerAs:'miscsCtrl'

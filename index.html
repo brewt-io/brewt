@@ -7,6 +7,13 @@
 
     <script type="text/javascript" src="app/app.js"></script>
 
+    <script type="text/javascript" src="app/util/util.js"></script>
+    <script type="text/javascript" src="app/util/conversion.js"></script>
+    <script type="text/javascript" src="app/util/ingredients.js"></script>
+    <script type="text/javascript" src="app/util/recipe.js"></script>
+
+    <script type="text/javascript" src="app/services/recipe.js"></script>
+
     <script type="text/javascript" src="app/ingredients/fermentables.js"></script>
     <script type="text/javascript" src="app/ingredients/hops.js"></script>
     <script type="text/javascript" src="app/ingredients/yeasts.js"></script>
@@ -29,21 +36,10 @@
       <section id="library">
         <h2>INGREDIENTS LIBRARY</h2>
 
-        <library-fermentables active-lib="activeLibrary"
-                              recipe-fermentables="recipeFermentables">
-        </library-fermentables>
-
-        <library-hops active-lib="activeLibrary"
-                      recipe-hops="recipeHops">
-        </library-hops>
-
-        <library-yeasts active-lib="activeLibrary"
-                        recipe-yeast="recipeYeast">
-        </library-yeasts>
-
-        <library-miscs active-lib="activeLibrary"
-                       recipe-miscs="recipeMiscs">
-        </library-miscs>
+        <library-fermentables active-lib="activeLibrary"></library-fermentables>
+        <library-hops active-lib="activeLibrary"></library-hops>
+        <library-yeasts active-lib="activeLibrary"></library-yeasts>
+        <library-miscs active-lib="activeLibrary"></library-miscs>
       </section>
 
       <section id="recipe">
@@ -53,10 +49,10 @@
 
         <h3>Ingredients:</h3>
 
-        <recipe-fermentables recipe-fermentables="recipe.fermentables"></recipe-fermentables>
-        <recipe-hops recipe-hops="recipeHops"></recipe-hops>
-        <recipe-yeast recipe-yeast="recipeYeast"></recipe-yeast>
-        <recipe-miscs recipe-miscs="recipeMiscs"></recipe-miscs>
+        <recipe-fermentables></recipe-fermentables>
+        <recipe-hops></recipe-hops>
+        <recipe-yeast></recipe-yeast>
+        <recipe-miscs></recipe-miscs>
 
       </section>
     </div>

@@ -6,7 +6,7 @@ angular.module('brewt').directive('libraryFermentables', function(){
             recipeFermentables:"="
         },
         templateUrl: 'app/ingredients/fermentables.html',
-        controller: function($scope, $http){
+        controller: function($scope, $http, Recp){
             this.active = function(){
                 return $scope.activeLib == 1;
             };
@@ -46,8 +46,10 @@ angular.module('brewt').directive('libraryFermentables', function(){
                                 inventory: parseFloat(res.FERMENTABLES[i].INVENTORY),
                                 potential: parseFloat(res.FERMENTABLES[i].POTENTIAL),
                                 displayAmount: res.FERMENTABLES[i].DISPLAY_AMOUNT,
-                                displayColor: res.FERMENTABLES[i].DISPLAY_COLOR
+                                displayColor: res.FERMENTABLES[i].DISPLAY_COLOR,
                             };
+                            ferm.ppg = ferm.yieldPer*39.604226*8.3454 / 100.0; //points per kg per L
+
                             fermentables.push(ferm);
                         }
                     }).
@@ -61,7 +63,7 @@ angular.module('brewt').directive('libraryFermentables', function(){
             this.addFermentable = function(ferm){
                 var newFermentable = JSON.parse(JSON.stringify(this.lib[this.lib.indexOf(ferm)]));
                 newFermentable.timeCreated = Date.now();
-                $scope.recipeFermentables.push(newFermentable);
+                Recp.grains.push(newFermentable);
             };
 
             this.lib = this.load();

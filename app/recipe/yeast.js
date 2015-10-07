@@ -1,16 +1,13 @@
 angular.module("brewt").directive('recipeYeast', function() {
     return {
         restrict: 'E',
-        scope:{
-            recipeYeast:"="
-        },
         templateUrl: 'app/recipe/yeast.html',
-        controller: function($scope){
+        controller: function(Recp){
             this.getYeast = function(){
-                return $scope.recipeYeast;
+                return Recp.yeast;
             };
             this.remove = function(){
-                $scope.recipeYeast = false;
+                Recp.yeast = false;
             }
         },
         controllerAs: 'yeastCtrl'

@@ -1,6 +1,6 @@
 <section>
   <div title={{styleCtrl.getSelected().description}}>
-    <h3 ng-click="styleCtrl.toggleActive()">Style: {{styleCtrl.getSelected().name}}</h3>
+    <h3 ng-click="styleCtrl.toggleActive()">Style: {{styleCtrl.getRecipe().style.name}}</h3>
     <ul>
       <li ng-repeat="style in styleCtrl.list" ng-show="styleCtrl.selectActive" ng-click="styleCtrl.select($index)">{{style.name}}</li>
     </ul>
@@ -15,33 +15,33 @@
     </tr>
     <tr>
       <td>OG</td>
-      <td>{{styleCtrl.getSelected().ogMin}}</td>
-      <td>{{styleCtrl.getSelected().ogMax}}</td>
-      <td>???</td>
+      <td>{{styleCtrl.getRecipe().style.ogMin}}</td>
+      <td>{{styleCtrl.getRecipe().style.ogMax}}</td>
+      <td>{{styleCtrl.getRecipe().calculateOrignalGravity()}}</td>
     </tr>
     <tr>
       <td>FG</td>
-      <td>{{styleCtrl.getSelected().fgMin}}</td>
-      <td>{{styleCtrl.getSelected().fgMax}}</td>
-      <td>???</td>
+      <td>{{styleCtrl.getRecipe().style.fgMin}}</td>
+      <td>{{styleCtrl.getRecipe().style.fgMax}}</td>
+      <td>{{styleCtrl.getRecipe().calculateFinalGravity()}}</td>
     </tr>
     <tr>
       <td>ABV</td>
-      <td>{{styleCtrl.getSelected().abvMin}}</td>
-      <td>{{styleCtrl.getSelected().abvMax}}</td>
-      <td>???</td>
+      <td>{{styleCtrl.getRecipe().style.abvMin}}</td>
+      <td>{{styleCtrl.getRecipe().style.abvMax}}</td>
+      <td>{{styleCtrl.getRecipe().calculateABV()}}</td>
     </tr>
     <tr>
       <td>IBU</td>
-      <td>{{styleCtrl.getSelected().ibuMin}}</td>
-      <td>{{styleCtrl.getSelected().ibuMax}}</td>
-      <td>???</td>
+      <td>{{styleCtrl.getRecipe().style.ibuMin}}</td>
+      <td>{{styleCtrl.getRecipe().style.ibuMax}}</td>
+      <td>{{styleCtrl.getRecipe().calculateBitterness()}}</td>
     </tr>
     <tr>
       <td>SRM</td>
-      <td>{{styleCtrl.getSelected().colorMin}}</td>
-      <td>{{styleCtrl.getSelected().colorMax}}</td>
-      <td>???</td>
+      <td>{{styleCtrl.getRecipe().style.colorMin}}</td>
+      <td>{{styleCtrl.getRecipe().style.colorMax}}</td>
+      <td>{{styleCtrl.getRecipe().calculateColor()}}</td>
     </tr>
   </table>
 

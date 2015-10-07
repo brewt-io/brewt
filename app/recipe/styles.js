@@ -2,13 +2,11 @@ angular.module('brewt').directive('recipeStyle', function($http) {
     return {
         restrict: 'E',
         templateUrl:'app/recipe/style.html',
-        controller: function(){
-            var activeStyle = 0;
+        controller: function(Recp){
             this.selectActive = false;
 
-
-            this.getSelected = function(){
-                return this.list[activeStyle];
+            this.getRecipe = function(){
+                return Recp;
             };
 
             this.toggleActive = function(){
@@ -16,9 +14,10 @@ angular.module('brewt').directive('recipeStyle', function($http) {
             };
 
             this.select = function(i){
-                activeStyle = i;
+                Recp.style = this.list[i];
                 this.toggleActive();
             };
+
             this.load = function(){
                 styles = [];
                 $http.get("data/styles.json").

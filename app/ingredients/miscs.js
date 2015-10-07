@@ -2,11 +2,10 @@ angular.module('brewt').directive('libraryMiscs', function(){
     return {
         restrict: 'E',
         scope: {
-            activeLib:"=",
-            recipeMiscs:"="
+            activeLib:"="
         },
         templateUrl: 'app/ingredients/miscs.html',
-        controller: function($scope, $http){
+        controller: function($scope, $http, Recp){
             this.active = function(){
                 return $scope.activeLib == 4;
             };
@@ -20,7 +19,7 @@ angular.module('brewt').directive('libraryMiscs', function(){
             };
 
             this.load = function(){
-                miscs = [];
+                miscs = []
                 $http.get("data/misc.json").
                     success(function(res){
                         for (var i = 0; i < res.MISCS.length; i++){
@@ -48,7 +47,7 @@ angular.module('brewt').directive('libraryMiscs', function(){
             };
 
             this.addMisc = function(i){
-                $scope.recipeMiscs.push(this.lib[i]);
+                Recp.miscs.push(this.lib[i]);
             };
 
             this.lib = this.load();

@@ -1,18 +1,13 @@
 angular.module("brewt").directive('recipeHops', function() {
     return {
         restrict: 'E',
-        scope:{
-          recipeHops:"="
-        },
         templateUrl: 'app/recipe/hops.html',
-        controller: function($scope){
-            $scope.recipeHops = [];
-
+        controller: function(Recp){
             this.getHops = function(){
-                return $scope.recipeHops;
+                return Recp.hops;
             };
             this.remove = function(i){
-                $scope.recipeHops.splice(i,1);
+                Recp.hops.splice(i,1);
             }
         },
         controllerAs:'hopsCtrl'

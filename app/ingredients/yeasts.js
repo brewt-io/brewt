@@ -2,11 +2,10 @@ angular.module('brewt').directive('libraryYeasts', function(){
     return {
         restrict: 'E',
         scope: {
-            activeLib:"=",
-            recipeYeast:"="
+            activeLib:"="
         },
         templateUrl: 'app/ingredients/yeasts.html',
-        controller: function($scope, $http){
+        controller: function($scope, $http, Recp){
 
             this.active = function(){
                 return $scope.activeLib == 2;
@@ -61,7 +60,7 @@ angular.module('brewt').directive('libraryYeasts', function(){
             this.setYeast = function(i){
                 newYeast = this.lib[i];
                 newYeast.timeCreated = Date.now();
-                $scope.recipeYeast = newYeast;
+                Recp.yeast = newYeast;
             };
 
             this.lib = this.load();
