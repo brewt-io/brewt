@@ -1,0 +1,64 @@
+.slider, .range {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #BBB;
+    width: 30em;
+    height: 1em;
+    border-radius: 2em;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.slider .range {
+    background: #cc515f;
+    width: 23em;
+}
+
+.slider .left, .right {
+    position: absolute;
+    background-color: #F67;
+    top: -.5em;
+    left: 3em;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+    line-height: 2em;
+}
+
+.slider .current:after {
+    content: "";
+    width: 0px;
+    height: 0px;
+    border: solid 1em transparent;
+    border-top: solid 1em #345;
+    display: block;
+    position: absolute;
+    bottom: -1.6em;
+    left: .5em;
+}
+
+.slider .right {
+    left: 25em;
+}
+
+.slider .current {
+    width: 3em;
+    height: 3em;
+    position: absolute;
+    background: #345;
+    margin-top: 31px;
+    left: 14em;
+    top: -6em;
+}
+
+.slider .current:after {
+    border: solid 1em transparent;
+    border-top: solid 1em #345;
+    bottom: -1.5em;
+    left: .5em;
+}

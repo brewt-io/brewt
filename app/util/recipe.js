@@ -8,7 +8,7 @@ function Recipe(equipment, style){
     this.style = style;
 }
 
-Recipe.prototype.calculateOrignalGravity = function(){
+Recipe.prototype.calculateOriginalGravity = function(){
     var totalPoints = 0;
     for (var i=0; i<this.grains.length; i++){
         totalPoints += this.grains[i].amount * this.grains[i].ppg * this.efficieny;
@@ -17,7 +17,7 @@ Recipe.prototype.calculateOrignalGravity = function(){
 };
 
 Recipe.prototype.calculateFinalGravity = function(){
-    var og = this.calculateOrignalGravity();
+    var og = this.calculateOriginalGravity();
     if (this.yeast ===  undefined)
     {
         return og;
@@ -28,7 +28,7 @@ Recipe.prototype.calculateFinalGravity = function(){
 
 Recipe.prototype.calculateABV = function(){
     var fg = this.calculateFinalGravity();
-    var og = this.calculateOrignalGravity();
+    var og = this.calculateOriginalGravity();
     if (fg >= og){
         return 0;
     }
@@ -51,7 +51,7 @@ Recipe.prototype.calculateColor = function(){
 };
 
 Recipe.prototype.calculateBitterness = function(){
-    var og = this.calculateOrignalGravity();
+    var og = this.calculateOriginalGravity();
     var totalIBU = 0;
     for (var i=0; i<this.hops.length; i++){
         var correctedGravity = 1 + (og-1.050)/2.0;

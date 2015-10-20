@@ -6,44 +6,40 @@
     </ul>
   </div>
 
-  <table width="60%">
-    <tr>
-      <td>Property</td>
-      <td>Min</td>
-      <td>Max</td>
-      <td>Recipe</td>
-    </tr>
-    <tr>
-      <td>OG</td>
-      <td>{{styleCtrl.getRecipe().style.ogMin}}</td>
-      <td>{{styleCtrl.getRecipe().style.ogMax}}</td>
-      <td>{{styleCtrl.getRecipe().calculateOrignalGravity()}}</td>
-    </tr>
-    <tr>
-      <td>FG</td>
-      <td>{{styleCtrl.getRecipe().style.fgMin}}</td>
-      <td>{{styleCtrl.getRecipe().style.fgMax}}</td>
-      <td>{{styleCtrl.getRecipe().calculateFinalGravity()}}</td>
-    </tr>
-    <tr>
-      <td>ABV</td>
-      <td>{{styleCtrl.getRecipe().style.abvMin}}</td>
-      <td>{{styleCtrl.getRecipe().style.abvMax}}</td>
-      <td>{{styleCtrl.getRecipe().calculateABV()}}</td>
-    </tr>
-    <tr>
-      <td>IBU</td>
-      <td>{{styleCtrl.getRecipe().style.ibuMin}}</td>
-      <td>{{styleCtrl.getRecipe().style.ibuMax}}</td>
-      <td>{{styleCtrl.getRecipe().calculateBitterness()}}</td>
-    </tr>
-    <tr>
-      <td>SRM</td>
-      <td>{{styleCtrl.getRecipe().style.colorMin}}</td>
-      <td>{{styleCtrl.getRecipe().style.colorMax}}</td>
-      <td>{{styleCtrl.getRecipe().calculateColor()}}</td>
-    </tr>
-  </table>
 
+  <slider prop-min=1.00
+          prop-max=1.150
+          style-min=styleCtrl.getRecipe().style.ogMin
+          style-max=styleCtrl.getRecipe().style.ogMax
+          val=styleCtrl.getRecipe().calculateOriginalGravity()>
+  </slider>
 
-</section>
+  <slider prop-min=1.00
+          prop-max=1.50
+          style-min=styleCtrl.getRecipe().style.fgMin
+          style-max=styleCtrl.getRecipe().style.fgMax
+          val=styleCtrl.getRecipe().calculateFinalGravity()>
+  </slider>
+
+  <slider prop-min=0
+          prop-max=15
+          style-min=styleCtrl.getRecipe().style.abvMin
+          style-max=styleCtrl.getRecipe().style.abvMax
+          val=styleCtrl.getRecipe().calculateABV()>
+  </slider>
+
+  <slider prop-min=0
+          prop-max=100
+          style-min=styleCtrl.getRecipe().style.ibuMin
+          style-max=styleCtrl.getRecipe().style.ibuMax
+          val=styleCtrl.getRecipe().calculateBitterness()>
+  </slider>
+
+  <slider prop-min=0
+          prop-max=15
+          style-min=styleCtrl.getRecipe().style.colorMin
+          style-max=styleCtrl.getRecipe().style.colorMax
+          val=styleCtrl.getRecipe().calculateColor()>
+  </slider>
+
+  </section>
