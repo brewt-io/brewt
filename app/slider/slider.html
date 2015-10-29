@@ -1,6 +1,7 @@
 <div class='slider'> <!--this is one instance of a slider-->
-  <div class="range"></div> <!--this is the blue bar-->
-  <div class="left" ng-style="{'left':{{styleMin}}'%'}">{{styleMin}}</div> <!--this is the left min value-->
-  <div class="current">{{val}}</div> <!--this is the tooltip-->
-  <div class="right" ng-style="{'left':{{styleMax}}'%'}">{{styleMax}}</div> <!--this is the right max value-->
+  <input type="button" value="Update" ng-click="sliderCtrl.update()">
+  <div class="range" ng-style="rangeStyle"></div> <!--this is the blue bar-->
+  <div class="left" ng-style="leftStyle">{{styleMin}}</div> <!--this is the left min value-->
+  <div class="current" ng-style="currentStyle">{{val}}</div> <!--this is the tooltip-->
+  <div class="right" ng-style="rightStyle">{{styleMax}}</div> <!--this is the right max value-->
 </div>

@@ -1,6 +1,4 @@
 <section>
-  <button class="btn1">set values</button>
-
   <div title={{styleCtrl.getSelected().description}}>
     <h3 ng-click="styleCtrl.toggleActive()">Style: {{styleCtrl.getRecipe().style.name}}</h3>
     <ul>
@@ -8,16 +6,15 @@
     </ul>
   </div>
 
-
-  <slider prop-min=1.00
+  <slider prop-min=1.000
           prop-max=1.150
           style-min=styleCtrl.getRecipe().style.ogMin
           style-max=styleCtrl.getRecipe().style.ogMax
           val=styleCtrl.getRecipe().calculateOriginalGravity()>
   </slider>
 
-  <slider prop-min=1.00
-          prop-max=1.50
+  <slider prop-min=1.000
+          prop-max=1.050
           style-min=styleCtrl.getRecipe().style.fgMin
           style-max=styleCtrl.getRecipe().style.fgMax
           val=styleCtrl.getRecipe().calculateFinalGravity()>
