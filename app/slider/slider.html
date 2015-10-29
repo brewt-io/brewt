@@ -1,13 +1,6 @@
-<button class="btn1">set values</button>
-
-<div class="container"> <!--this is the slider section-->
-
-  <div class='slider'> <!--this is one instance of a slider-->
-    <div class="range"></div> <!--this is the blue bar-->
-    <div class="left">0</div> <!--this is the left min value-->
-    <div class="current">50</div> <!--this is the tooltip-->
-    <div class="right">100</div> <!--this is the right max value-->
-  </div>
-
-
+<div class='slider'> <!--this is one instance of a slider-->
+  <div class="range"></div> <!--this is the blue bar-->
+  <div class="left" ng-style="{'left':{{styleMin}}'%'}">{{styleMin}}</div> <!--this is the left min value-->
+  <div class="current">{{val}}</div> <!--this is the tooltip-->
+  <div class="right" ng-style="{'left':{{styleMax}}'%'}">{{styleMax}}</div> <!--this is the right max value-->
 </div>
